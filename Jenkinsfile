@@ -18,5 +18,10 @@ pipeline{
                 sh 'echo "The website is ruunig perfect "'
             }
         }
+	stage("ansible node ip "){
+	    steps{
+	    sh 'ansible all -m command -a "curl ifconfig.me."'
+	    }
+	}
     }
 }
