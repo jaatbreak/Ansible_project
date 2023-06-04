@@ -1,0 +1,16 @@
+- hosts: "webserver"
+  vars_files:
+    - vars.yaml
+  tasks:
+    - name: installing the httpd service
+      package:
+        name: "{{ package_name }}"
+        state: present
+    - name: controlling the service
+      service:
+        name: "{{ package_name }}"
+        state: started
+    - name: sending the index file to the destination
+      template:
+        src: "{{ src}}"
+        dest: "{{ dest }}"
