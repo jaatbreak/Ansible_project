@@ -20,7 +20,7 @@ pipeline{
         }
 	stage("ansible node ip "){
 	    steps{
-	    sh 'sudo nsible all -m command -a "curl ifconfig.me."'
+	    sh 'sudo ansible all -m command -a "curl ifconfig.me."'
 	    }
 	}
     }
