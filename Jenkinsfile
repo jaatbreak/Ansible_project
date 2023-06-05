@@ -4,8 +4,8 @@ pipeline{
     }
     stages{
         stage("Pulling the code from scm"){
-           steps{
-               git branch: 'master', url: 'https://github.com/jaatbreak/Ansible_project.'
+           steps{ 
+             sh 'git clone "https://github.com/jaatbreak/Ansible_project.git"'
            } 
         }
         stage("Running The yaml file to ansible server "){
