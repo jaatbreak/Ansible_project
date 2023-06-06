@@ -5,7 +5,7 @@ pipeline{
     stages{
         stage("Pulling the code from scm"){
            steps{ 
-             sh 'git clone "https://github.com/jaatbreak/Ansible_project.git"'
+             sh git clone "https://github.com/jaatbreak/Ansible_project.git"'
            } 
         }
         stage("Running The yaml file to ansible server "){
@@ -18,10 +18,11 @@ pipeline{
                 sh 'sudo echo "The website is ruunig perfect "'
             }
         }
-	stage("ansible node ip "){
-	    steps{
-	    sh 'sudo ansible all -m command -a "curl ifconfig.me."'
-	    }
+	steps("Checking The Ansible Node Health"){
+	steps{
+	      Boolean userInput = input(id: 'Proceed1', message: 'Do You want Ansible Node IP?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
+                				echo 'userInput: ' + userInput
+	}
 	}
     }
 }
