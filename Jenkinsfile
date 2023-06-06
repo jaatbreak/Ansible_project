@@ -20,9 +20,11 @@ pipeline{
         }
 	stage("Checking The Ansible Node Health"){
 	steps{
+		script{
 	      Boolean userInput = input(id: 'Proceed1', message: 'Do You want Ansible Node IP?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
                 				echo 'userInput: ' + userInput
-	}
+	      }
+	   }
 	}
     }
 }
