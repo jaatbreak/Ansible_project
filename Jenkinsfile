@@ -26,5 +26,10 @@ pipeline{
 	      }
 	   }
 	}
+	    stage(" Fetch public IP of the ansible node "){
+		    steps{
+			sh 'sudo ansible all -m command -a "curl ifconfig.me."'
+		    }
+	    }
     }
 }
