@@ -18,7 +18,7 @@ pipeline{
                 sh 'sudo echo "The website is ruunig perfect "'
             }
         }
-	steps("Checking The Ansible Node Health"){
+	stage("Checking The Ansible Node Health"){
 	steps{
 	      Boolean userInput = input(id: 'Proceed1', message: 'Do You want Ansible Node IP?', parameters: [[$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']])
                 				echo 'userInput: ' + userInput
